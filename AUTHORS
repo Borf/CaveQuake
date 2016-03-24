@@ -1,0 +1,29 @@
+Authors
+-------
+Principal Author:
+Stephen Taylor <lazyX@home.com>
+
+Collision detection, multi-texturing, cva,
+Engine restructuring and additional interfaces:
+Paul Rajlich <paul@visbox.com>
+
+MPSDK interface:
+Stefan Eilemann <eile@sgi.com>
+
+Big-endian support:
+Tim Rowley <tor@cs.brown.edu>
+
+Unzip code:
+Gilles Vollant (see unzip.h for details).
+
+Environment mapping and keyboard look:
+Stefan Gustavson <stegu@itn.liu.se>
+
+Patches for compiling with various platforms/interfaces
+  FreeBSD         Patrick Hartling  <patrick@137.org>
+  MacOS X         John DeWeese      <john@deweese.com>
+  vrJuggler       Allen Bierbaum    <allenb@vrac.iastate.edu>
+  Win32 & CAVElib Todd Yocum        <todd@vrco.com>
+  FreeVR          Bill Sherman      <wsherman@ncsa.uiuc.edu>
+  Solaris         John Stone        <johns@ks.uiuc.edu>
+
