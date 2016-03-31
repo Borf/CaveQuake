@@ -333,12 +333,6 @@
     <ClInclude Include="vec.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Zconf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Zlib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="libjpeg\jdhuff.h">
       <Filter>libjpeg</Filter>
     </ClInclude>

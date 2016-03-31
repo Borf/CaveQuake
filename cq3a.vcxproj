@@ -383,8 +383,6 @@
     <ClInclude Include="unzip.h" />
     <ClInclude Include="util.h" />
     <ClInclude Include="vec.h" />
-    <ClInclude Include="Zconf.h" />
-    <ClInclude Include="Zlib.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon.ico" />

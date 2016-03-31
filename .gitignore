@@ -26,3 +26,5 @@
 *.exe
 *.out
 *.app
+Release/cq3a.pdb
+cq3a.vcxproj.user
