@@ -111,7 +111,7 @@ public:
 
   double lastQuitKeyTime;
   bool lastQuitKey;
-
+  bool vive = false;
 public:
 	myApp()
 	{
@@ -134,6 +134,18 @@ public:
 	  mButton2.init("MiddleButton");
 	  mKeyPageDown.init("KeyPageDown");
 	  mKeyPageUp.init("KeyPageUp");
+
+	  if (!mButton2.isInitialized())
+	  {
+		  mButton0.init("buttonLeftTrigger");
+		  mButton1.init("buttonRightTrigger");
+		  mButton2.init("buttonRightMenu");
+
+		  mKeyPageDown.init("buttonLeftGrip");
+		  mKeyPageUp.init("buttonRightGrip");
+		  vive = true;
+
+	  }
 
 
 	  stop = false;
@@ -255,18 +267,28 @@ virtual void postFrame()
 		{
 			glm::vec4 up = wandMat * glm::vec4(0,1,0, 0);
 			glm::vec3 rot1 = getRotation(wandMat, glm::vec3(0,0,0), glm::vec3(0,0,1));
+
 			up = glm::rotate(glm::mat4(), glm::radians(-rot1[1]), glm::vec3(0,1,0)) * up;
+			if(vive)
+				up = glm::rotate(glm::mat4(), glm::radians(rot1[1]), glm::vec3(0, -1, 0)) * up;
+
 			wandH = glm::degrees(atan2(up[0], up[1]));
+			if (vive)
+				wandH = glm::degrees(atan2(up[0], -up[1]));
 
 			if(wandH < 0)
 				wandH = -180 - wandH;
 			else
 				wandH = 180 - wandH;
+			if (vive)
+				wandH = -wandH;
 		}
 
 
 		glm::mat4 correction_mat = glm::rotate(glm::mat4(), glm::radians(g->r_eye_az), glm::vec3(0,1,0));
 		glm::vec4 eye_dir = correction_mat * wandMat * glm::vec4(0.0f, 0.0f, -1.0f, 0.0);
+		if(vive)
+			eye_dir = correction_mat * wandMat * glm::vec4(0.0f, 0.0f, 1.0f, 0.0);
 
 		// Flip to engine coordinate system
 		g->r_movedir[0] = -eye_dir[2];    // +z
@@ -296,7 +318,6 @@ virtual void postFrame()
 			if(diff > 4*3.1415)
 				startWobble = 0;
 		}
-
 		//else vjDEBUG(0,0) << "Clipping az because wandP is --> " << wandP << std::endl << vjDEBUG_FLUSH;
 
 		ui_move(frametime - starttime);
